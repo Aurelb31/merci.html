@@ -31,7 +31,7 @@
     <h2>🎯 Piégé !</h2>
     <p>Tu viens de donner ton nom et prénom à un QR code inconnu.<br><br>
     Et si j’avais été un pirate, hein ? 🏴‍☠️<br><br>
-    Heureusement, ce piège était juste un exercice...<br>
+    Heureusement, ce piège était juste un exercice...mais tu viens de faire perdre 10 points à ton équipe<br>
     Mais souviens-toi : <strong>méfie-toi toujours des QR codes sauvages !</strong></p>
   </div>
 </body>
