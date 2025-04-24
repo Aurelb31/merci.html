@@ -56,14 +56,22 @@
       font-size: 1.1rem;
       color: #333;
       animation: fadeIn 2s ease-in-out;
-      max-height: 200px;
+      max-height: 300px;
       overflow-y: auto;
       display: none; /* Commence invisible pour l'effet flash */
     }
 
-    .info-box strong {
-      display: block;
-      margin-top: 1rem;
+    .bonus-box {
+      margin-top: 2rem;
+      text-align: left;
+      background: #cce5ff;
+      padding: 1rem 1.5rem;
+      border-left: 5px solid #007bff;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      color: #333;
+      animation: fadeIn 2s ease-in-out;
+      display: none; /* Commence invisible */
     }
 
     .loading {
@@ -101,12 +109,18 @@
     Heureusement, ce piège était juste un exercice... mais tu viens de faire perdre 10 points à ton équipe 😬<br>
     <strong>Moralité : méfie-toi toujours des QR codes sauvages !</strong></p>
 
+    <!-- Première section : Infos disponibles immédiatement -->
     <div class="info-box" id="info-box">
-      <p><em>Voici ce qu’un simple QR code aurait pu collecter sur toi :</em></p>
+      <p><em>Voici ce qu’un simple QR code aurait pu collecter immédiatement sur toi :</em></p>
       <strong>📱 Appareil / Navigateur :</strong> <span id="agent">Chargement...</span>
       <strong>🕒 Heure locale :</strong> <span id="time">Chargement...</span>
-      <strong>📍 Localisation :</strong> <span id="geo">en cours...</span>
       <strong>🖥️ Résolution de l'écran :</strong> <span id="screen">Chargement...</span>
+    </div>
+
+    <!-- Deuxième section : Infos "bonus" -->
+    <div class="bonus-box" id="bonus-box">
+      <p><em>En bonus, voici ce que l'on peut obtenir avec un peu plus de temps :</em></p>
+      <strong>📍 Localisation :</strong> <span id="geo">en cours...</span>
     </div>
   </div>
 
@@ -122,4 +136,22 @@
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          const { latitude, longitude } = position
+          const { latitude, longitude } = position.coords;
+          document.getElementById('geo').textContent = `Latitude ${latitude.toFixed(3)}, Longitude ${longitude.toFixed(3)}`;
+          document.getElementById('bonus-box').style.display = 'block'; // Afficher les infos après la géolocalisation
+        },
+        () => {
+          document.getElementById('geo').textContent = `refusée par l'utilisateur.`;
+          document.getElementById('bonus-box').style.display = 'block'; // Afficher les infos même sans géolocalisation
+        }
+      );
+    } else {
+      document.getElementById('geo').textContent = `non disponible.`;
+      document.getElementById('bonus-box').style.display = 'block'; // Afficher les infos même sans géolocalisation
+    }
+
+    // Afficher immédiatement les infos de la première section
+    document.getElementById('info-box').style.display = 'block';
+  </script>
+</body>
+</html>
