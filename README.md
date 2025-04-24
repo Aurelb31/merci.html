@@ -24,18 +24,23 @@
       font-size: 1.1rem;
       margin-top: 1rem;
     }
-    .info {
+    .info-box {
       margin-top: 2rem;
       text-align: left;
-      font-size: 0.95rem;
       background: #fff3cd;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       border-left: 5px solid #ffc107;
       border-radius: 6px;
+      font-size: 0.95rem;
+      color: #333;
     }
-    .info strong {
+    .info-box strong {
       display: block;
       margin-top: 1rem;
+    }
+    .loading {
+      font-style: italic;
+      color: #888;
     }
   </style>
 </head>
@@ -47,36 +52,17 @@
     Heureusement, ce piège était juste un exercice... mais tu viens de faire perdre 10 points à ton équipe 😬<br>
     <strong>Moralité : méfie-toi toujours des QR codes sauvages !</strong></p>
 
-    <div class="info" id="info">
-      <em>Voici ce qu’un simple site a pu savoir sur toi :</em>
-      <p><strong>Chargement des données techniques...</strong></p>
+    <div class="info-box" id="info-box">
+      <p class="loading">⏳ Récupération des informations techniques...</p>
     </div>
   </div>
 
   <script>
-    const infoDiv = document.getElementById('info');
+    const box = document.getElementById('info-box');
     const userAgent = navigator.userAgent;
     const time = new Date().toLocaleString();
 
-    let details = `
-      <strong>🧠 Appareil / Navigateur :</strong>${userAgent}
-      <strong>🕒 Heure locale :</strong>${time}
-    `;
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const { latitude, longitude } = position.coords;
-          details += `<strong>📍 Localisation approximative :</strong>Latitude : ${latitude.toFixed(3)}, Longitude : ${longitude.toFixed(3)}`;
-          infoDiv.innerHTML = `<em>Voici ce qu’un simple site a pu savoir sur toi :</em><p>${details}</p>`;
-        },
-        () => {
-          infoDiv.innerHTML = `<em>Voici ce qu’un simple site a pu savoir sur toi :</em><p>${details}<br><strong>📍 Localisation : </strong>refusée par l'utilisateur.</p>`;
-        }
-      );
-    } else {
-      infoDiv.innerHTML = `<em>Voici ce qu’un simple site a pu savoir sur toi :</em><p>${details}</p>`;
-    }
-  </script>
-</body>
-</html>
+    let infoHTML = `
+      <em>Voici ce qu’un simple QR code aurait pu collecter sur toi :</em>
+      <strong>📱 Appareil / Navigateur :</strong> ${userAgent}
+      <strong>🕒
