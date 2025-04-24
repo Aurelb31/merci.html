@@ -24,6 +24,19 @@
       font-size: 1.1rem;
       margin-top: 1rem;
     }
+    .info {
+      margin-top: 2rem;
+      text-align: left;
+      font-size: 0.95rem;
+      background: #fff3cd;
+      padding: 1rem;
+      border-left: 5px solid #ffc107;
+      border-radius: 6px;
+    }
+    .info strong {
+      display: block;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -31,8 +44,5 @@
     <h2>🎯 Piégé !</h2>
     <p>Tu viens de donner ton nom et prénom à un QR code inconnu.<br><br>
     Et si j’avais été un pirate, hein ? 🏴‍☠️<br><br>
-    Heureusement, ce piège était juste un exercice...mais tu viens de faire perdre 10 points à ton équipe<br>
-    Mais souviens-toi : <strong>méfie-toi toujours des QR codes sauvages !</strong></p>
-  </div>
-</body>
-</html>
+    Heureusement, ce piège était juste un exercice... mais tu viens de faire perdre 10 points à ton équipe 😬<br>
+    <strong>Moralité : méfie-toi toujours des QR codes sauvages !
