@@ -13,9 +13,9 @@
       height: 100vh;
       text-align: center;
       padding: 20px;
-      animation: shake 1s ease-in-out infinite; /* Animation de secousse */
       margin: 0;
       overflow: hidden;
+      animation: shake 1s ease-in-out infinite; /* Animation de secousse */
     }
 
     .message {
@@ -98,6 +98,11 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(0deg); }
     }
+
+    /* Application de l'animation et de l'arrêt après 3 secondes */
+    body.stopped {
+      animation: none;
+    }
   </style>
 </head>
 <body>
@@ -109,11 +114,4 @@
     <strong>Moralité : méfie-toi toujours des QR codes sauvages !</strong></p>
 
     <div class="info-box" id="info-box">
-      <p><em>Voici ce qu’un simple QR code aurait pu collecter sur toi :</em></p>
-      <strong>📱 Appareil / Navigateur :</strong> <span id="agent">Chargement...</span>
-      <strong>🕒 Heure locale :</strong> <span id="time">Chargement...</span>
-      <strong>📍 Localisation :</strong> <span id="geo">en cours...</span>
-      <strong>🌍 Adresse IP :</strong> <span id="ip">en cours...</span>
-      <strong>🖥️ Résolution de l'écran :</strong> <span id="screen">Chargement...</span>
-    </div>
-  </
+      <p><em>Voici ce qu’un simple QR
