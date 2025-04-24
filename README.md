@@ -72,6 +72,8 @@
       color: #333;
       animation: fadeIn 2s ease-in-out;
       display: none; /* Commence invisible */
+      max-height: 500px;
+      overflow-y: auto; /* Permet le scroll */
     }
 
     .loading {
@@ -99,6 +101,12 @@
       100% { opacity: 1; }
     }
 
+    /* Ajout de l'animation de flash uniquement à l'ouverture */
+    @keyframes flashPage {
+      0% { background-color: #ff6666; }
+      50% { background-color: #ffffff; } /* Écran devient blanc */
+      100% { background-color: #ff6666; } /* Retour au rouge */
+    }
   </style>
 </head>
 <body>
@@ -111,7 +119,7 @@
 
     <!-- Première section : Infos disponibles immédiatement -->
     <div class="info-box" id="info-box">
-      <p><em>Voici ce qu’un simple QR code aurait pu collecter immédiatement sur toi :</em></p>
+      <p><em style="color: black;">Voici ce qu’un simple QR code aurait pu collecter immédiatement sur toi :</em></p>
       <strong>📱 Appareil / Navigateur :</strong> <span id="agent">Chargement...</span>
       <strong>🕒 Heure locale :</strong> <span id="time">Chargement...</span>
       <strong>🖥️ Résolution de l'écran :</strong> <span id="screen">Chargement...</span>
@@ -125,6 +133,9 @@
   </div>
 
   <script>
+    // Afficher l'effet flash de la page pendant 1 seconde à l'ouverture
+    document.body.style.animation = "flashPage 1s ease-out";
+
     // Récupération immédiate des infos connues
     document.getElementById('agent').textContent = navigator.userAgent;
     document.getElementById('time').textContent = new Date().toLocaleString();
@@ -152,6 +163,7 @@
 
     // Afficher immédiatement les infos de la première section
     document.getElementById('info-box').style.display = 'block';
+
   </script>
 </body>
 </html>
