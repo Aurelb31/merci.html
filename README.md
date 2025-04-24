@@ -15,6 +15,7 @@
       padding: 20px;
       animation: shake 1s ease-in-out infinite; /* Animation de secousse */
       margin: 0;
+      overflow: hidden;
     }
 
     .message {
@@ -25,11 +26,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       background-color: rgba(0, 0, 0, 0.6);
       width: 100%;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
+      z-index: 1; /* Assurez-vous que le contenu soit au-dessus du fond */
     }
 
     h2 {
@@ -89,4 +90,30 @@
     /* Effet de fade-in pour le box */
     @keyframes fadeIn {
       0% { opacity: 0; }
-      100
+      100% { opacity: 1; }
+    }
+
+    /* Arrêt de l'animation de secousse après 3 secondes */
+    @keyframes stopShake {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h2>🎯 Piégé !</h2>
+    <p>Tu viens de donner ton nom et prénom à un QR code inconnu.<br><br>
+    Et si j’avais été un pirate, hein ? 🏴‍☠️<br><br>
+    Heureusement, ce piège était juste un exercice... mais tu viens de faire perdre 10 points à ton équipe 😬<br>
+    <strong>Moralité : méfie-toi toujours des QR codes sauvages !</strong></p>
+
+    <div class="info-box" id="info-box">
+      <p><em>Voici ce qu’un simple QR code aurait pu collecter sur toi :</em></p>
+      <strong>📱 Appareil / Navigateur :</strong> <span id="agent">Chargement...</span>
+      <strong>🕒 Heure locale :</strong> <span id="time">Chargement...</span>
+      <strong>📍 Localisation :</strong> <span id="geo">en cours...</span>
+      <strong>🌍 Adresse IP :</strong> <span id="ip">en cours...</span>
+      <strong>🖥️ Résolution de l'écran :</strong> <span id="screen">Chargement...</span>
+    </div>
+  </
