@@ -15,7 +15,7 @@
       padding: 20px;
       margin: 0;
       overflow: hidden;
-      animation: shake 1s ease-in-out infinite; /* Animation de secousse */
+      animation: flash 1s ease-in-out forwards; /* Flash effect */
     }
 
     .message {
@@ -71,47 +71,22 @@
       color: #888;
     }
 
-    /* Animation de secousse */
-    @keyframes shake {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
-      75% { transform: rotate(-5deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    /* Flash effect sur le titre */
+    /* Animation flash pour l'effet dramatique */
     @keyframes flash {
-      0% { color: #ffcc00; }
-      50% { color: #ff0000; }
-      100% { color: #ffcc00; }
+      0% { background-color: #ff6666; }
+      50% { background-color: #ff0000; }
+      100% { background-color: #ff6666; }
     }
 
-    /* Effet de fade-in pour le box */
+    /* Fade-in effect */
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
 
-    /* Arrêt de l'animation de secousse après 3 secondes */
-    @keyframes stopShake {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    /* Application de l'animation et de l'arrêt après 3 secondes */
-    body.stopped {
-      animation: none;
-    }
   </style>
 </head>
 <body>
   <div class="message">
     <h2>🎯 Piégé !</h2>
-    <p>Tu viens de donner ton nom et prénom à un QR code inconnu.<br><br>
-    Et si j’avais été un pirate, hein ? 🏴‍☠️<br><br>
-    Heureusement, ce piège était juste un exercice... mais tu viens de faire perdre 10 points à ton équipe 😬<br>
-    <strong>Moralité : méfie-toi toujours des QR codes sauvages !</strong></p>
-
-    <div class="info-box" id="info-box">
-      <p><em>Voici ce qu’un simple QR
+    <p
