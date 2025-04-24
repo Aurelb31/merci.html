@@ -53,16 +53,32 @@
     <strong>Moralité : méfie-toi toujours des QR codes sauvages !</strong></p>
 
     <div class="info-box" id="info-box">
-      <p class="loading">⏳ Récupération des informations techniques...</p>
+      <p><em>Voici ce qu’un simple QR code aurait pu collecter sur toi :</em></p>
+      <strong>📱 Appareil / Navigateur :</strong> <span id="agent">Chargement...</span>
+      <strong>🕒 Heure locale :</strong> <span id="time">Chargement...</span>
+      <strong>📍 Localisation :</strong> <span id="geo">en cours...</span>
     </div>
   </div>
 
   <script>
-    const box = document.getElementById('info-box');
-    const userAgent = navigator.userAgent;
-    const time = new Date().toLocaleString();
+    // Récupération immédiate des infos connues
+    document.getElementById('agent').textContent = navigator.userAgent;
+    document.getElementById('time').textContent = new Date().toLocaleString();
 
-    let infoHTML = `
-      <em>Voici ce qu’un simple QR code aurait pu collecter sur toi :</em>
-      <strong>📱 Appareil / Navigateur :</strong> ${userAgent}
-      <strong>🕒
+    // Géolocalisation (bonus)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          document.getElementById('geo').textContent = `Latitude ${latitude.toFixed(3)}, Longitude ${longitude.toFixed(3)}`;
+        },
+        () => {
+          document.getElementById('geo').textContent = `refusée par l'utilisateur.`;
+        }
+      );
+    } else {
+      document.getElementById('geo').textContent = `non disponible.`;
+    }
+  </script>
+</body>
+</html>
