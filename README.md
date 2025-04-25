@@ -70,7 +70,7 @@
     <p>
       Tu viens de donner ton nom et prénom à un QR code inconnu.<br><br>
       Et si j’avais été un pirate, hein ? 🏴‍☠️<br><br>
-      Heureusement, ce piège était juste un exercice...<br><br>
+      Heureusement, ce piège était juste un exercice...Tu viens de faire perdre 10 points à ton équipe<br><br>
       <strong style="color:black;">Voici ce qu’un simple QR code aurait pu collecter immédiatement sur toi :</strong>
     </p>
 
